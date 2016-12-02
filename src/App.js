@@ -15,9 +15,9 @@ const InputButton = (props) => {
 const TodoList = (props) => {
   return (
     <ul>
-      <li>test1</li>
-      <li>test2</li>
-      <li>test3</li>
+      {props.todos.map(todo => (
+        <li>{todo}</li>
+      ))}
     </ul>
   )
 }
@@ -29,7 +29,8 @@ class App extends Component {
       todos: [
         'foo',
         'bar',
-        'baz'
+        'baz',
+        'new todo'
       ]
     }
   }
@@ -39,7 +40,7 @@ class App extends Component {
       <div className="App">
         <InputField />
         <InputButton />
-        <TodoList />
+        <TodoList todos={this.state.todos}/>
       </div>
     );
   }
