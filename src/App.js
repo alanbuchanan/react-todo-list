@@ -18,20 +18,26 @@ const InputButton = (props) => {
 }
 
 const TodoList = (props) => {
+  const listItemStyle = (index) => {
+    return props.completedIndexes.includes(index)
+    ? {
+      textDecoration: 'line-through'
+    }
+    : {}
+  }
+
+  const listItems = props.todos.map((todo, index) =>
+    <li key={index}
+      onClick={props.handleTodoItemClick.bind(this, index)}
+      style={listItemStyle(index)}
+    >
+      {todo}
+    </li>
+  )
+
   return (
     <ul>
-      {props.todos.map((todo, index) =>
-        <li key={index}
-          onClick={props.handleTodoItemClick.bind(this, index)}
-          style={props.completedIndexes.includes(index)
-          ? {
-            textDecoration: 'line-through'
-          }
-          : {}}
-        >
-          {todo}
-        </li>
-      )}
+      {listItems}
     </ul>
   )
 }
