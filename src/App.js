@@ -26,12 +26,40 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
+      inputValue: '',
+      todos: [],
+      completedIndexes: []
+    }
+  }
+
+  handleClick(e) {
+    this.setState({
       todos: [
-        'foo',
-        'bar',
-        'baz',
-        'new todo'
-      ]
+        ...this.state.todos,
+        this.state.inputValue
+      ],
+      inputValue: ''
+    })
+  }
+
+  handleChange(e) {
+    this.setState({inputValue: e.target.value})
+  }
+
+  handleTodoItemClick(index, e) {
+    if (this.state.completedIndexes.includes(index)) {
+      this.setState({
+        completedIndexes: this.state.completedIndexes.filter(
+          element => index !== element
+        )
+      })
+    } else {
+      this.setState({
+        completedIndexes: [
+          ...this.state.completedIndexes,
+          index
+        ]
+      })
     }
   }
 
