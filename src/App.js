@@ -4,18 +4,20 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      todos: [
-        'foo',
-        'bar',
-        'baz'
-      ]
+      foo: 'bar'
     }
+  }
+
+  handleClick() {
+    this.setState({
+      foo: 'something else'
+    })
   }
 
   render() {
     return (
-      <div className="App">
-        Hello, World!
+      <div className="App" onClick={this.handleClick.bind(this)}>
+        {this.state.foo}
       </div>
     );
   }
