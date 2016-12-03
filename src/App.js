@@ -52,7 +52,7 @@ class App extends Component {
     }
   }
 
-  handleClick(e) {
+  handleClick() {
     this.setState({
       todos: [
         ...this.state.todos,
@@ -66,7 +66,7 @@ class App extends Component {
     this.setState({inputValue: e.target.value})
   }
 
-  handleTodoItemClick(index, e) {
+  handleTodoItemClick(index) {
     if (this.state.completedIndexes.includes(index)) {
       this.setState({
         completedIndexes: this.state.completedIndexes.filter(
