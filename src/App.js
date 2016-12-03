@@ -12,7 +12,7 @@ const InputField = (props) => {
 const InputButton = (props) => {
   return (
     <button onClick={props.handleClick}>
-      Add Todos
+      Add Todo
     </button>
   )
 }
