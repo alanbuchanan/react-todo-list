@@ -2,22 +2,36 @@ import React, { Component } from 'react';
 
 const InputField = (props) => {
   return (
-    <input type="text"/>
+    <input value={props.inputValue}
+      onChange={props.handleChange}
+      type="text"
+    />
   )
 }
 
 const InputButton = (props) => {
   return (
-    <button>Add Todo</button>
+    <button onClick={props.handleClick}>
+      Add Todos
+    </button>
   )
 }
 
 const TodoList = (props) => {
   return (
     <ul>
-      {props.todos.map(todo => (
-        <li>{todo}</li>
-      ))}
+      {props.todos.map((todo, index) =>
+        <li key={index}
+          onClick={props.handleTodoItemClick.bind(this, index)}
+          style={props.completedIndexes.includes(index)
+          ? {
+            textDecoration: 'line-through'
+          }
+          : {}}
+        >
+          {todo}
+        </li>
+      )}
     </ul>
   )
 }
@@ -59,16 +73,22 @@ class App extends Component {
           ...this.state.completedIndexes,
           index
         ]
-      })
+      }) 
     }
   }
 
   render() {
     return (
       <div className="App">
-        <InputField />
-        <InputButton />
-        <TodoList todos={this.state.todos}/>
+        <InputField inputValue={this.state.inputValue}
+          handleChange={this.handleChange.bind(this)}
+        />
+        <InputButton handleClick={this.handleClick.bind(this)}
+        />
+        <TodoList todos={this.state.todos}
+          handleTodoItemClick={this.handleTodoItemClick.bind(this)}
+          completedIndexes={this.state.completedIndexes}
+        />
       </div>
     );
   }
