@@ -6,18 +6,20 @@ const InputField = (props) => {
   )
 }
 
-const InputButton = (props) => {
+const Button = (props) => {
   return (
-    <button>Add Todo</button>
+    <button>Add to list</button>
   )
 }
 
-const TodoList = (props) => {
+const List = (props) => {
+  console.log(props.todos)
+
   return (
     <ul>
-      <li>test1</li>
-      <li>test2</li>
-      <li>test3</li>
+      {props.todos.map(todo => {
+        return <li>{todo}</li>
+      })}
     </ul>
   )
 }
@@ -38,8 +40,8 @@ class App extends Component {
     return (
       <div className="App">
         <InputField />
-        <InputButton />
-        <TodoList />
+        <Button />
+        <List todos={this.state.todos} />
       </div>
     );
   }
