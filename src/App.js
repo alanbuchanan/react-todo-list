@@ -2,23 +2,22 @@ import React, { Component } from 'react';
 
 const InputField = (props) => {
   return (
-    <input type="text"/>
+    <input type="text" />
   )
 }
 
 const Button = (props) => {
   return (
-    <button>Add to list</button>
+    <button>Go</button>
   )
 }
 
 const List = (props) => {
-  console.log(props.todos)
-
+  console.log(props)
   return (
     <ul>
-      {props.todos.map(todo => {
-        return <li>{todo}</li>
+      {props.todos.map((todo, index) => {
+        return <li key={index}>{todo}</li>
       })}
     </ul>
   )
@@ -41,7 +40,7 @@ class App extends Component {
       <div className="App">
         <InputField />
         <Button />
-        <List todos={this.state.todos} />
+        <List todos={this.state.todos} />    
       </div>
     );
   }
