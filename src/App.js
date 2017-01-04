@@ -16,8 +16,8 @@ const List = (props) => {
   console.log(props)
   return (
     <ul>
-      {props.todos.map((todo, index) => {
-        return <li key={index}>{todo}</li>
+      {props.todos.map(todo => {
+        return <li key={todo.id}>{todo.name}</li>
       })}
     </ul>
   )
@@ -28,9 +28,9 @@ class App extends Component {
     super()
     this.state = {
       todos: [
-        'foo',
-        'bar',
-        'baz'
+        {id: 0, name: 'foo'},
+        {id: 1, name: 'bar'},
+        {id: 2, name: 'baz'}
       ]
     }
   }
