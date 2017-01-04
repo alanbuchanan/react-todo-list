@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 const InputField = (props) => {
   return (
@@ -42,8 +42,8 @@ class App extends Component {
         <Button />
         <List todos={this.state.todos} />    
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
